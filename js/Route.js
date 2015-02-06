@@ -24,6 +24,8 @@ var Route = {
         var start = $('#start').val();
         var end = $('#end').val();
 
+        $('.step').remove();
+
         var request = {
             origin:start,
             destination:end,
