@@ -4,6 +4,7 @@ var Route = {
     directionsService: new google.maps.DirectionsService(),
     map: null,
     stepTemplate: "",
+    errorTemplate: "",
 
     construct: function() {
         this.directionsDisplay = new google.maps.DirectionsRenderer();
@@ -17,6 +18,10 @@ var Route = {
 
         $.get('templates/step.html', function(data) {
             Route.stepTemplate = data;
+        });
+
+        $.get('templates/error.html', function(data) {
+            Route.errorTemplate = data;
         });
     },
 
@@ -40,7 +45,6 @@ var Route = {
                     var num = i + 1;
 
                     var image_url = "https://maps.googleapis.com/maps/api/streetview?size=600x300&location="+obj.start_location.k+","+obj.start_location.D+"&fov=90";
-                    console.log(image_url);
 
                     $('.results').append(Route.stepTemplate);
                     $('.step:last .step-num').text(num);
@@ -48,6 +52,8 @@ var Route = {
                     $('.step:last .street-view img').attr('src', image_url);
 
                 })
+            } else {
+                $('.results').append(Route.errorTemplate);
             }
         });
     }
@@ -56,4 +62,11 @@ var Route = {
 $('#go').click(function(e) {
     e.preventDefault();
     Route.getRoute();
-})
+});
+
+$(document).keypress(function(e) {
+   if (e.which == 13 && $('input').is(':focus')) {
+       e.preventDefault();
+       Route.getRoute();
+   }
+});
