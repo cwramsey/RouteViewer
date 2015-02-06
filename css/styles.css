@@ -19,3 +19,11 @@
 .step img {
     width: 100%;
 }
+
+.fork {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+    z-index: 2;
+}
