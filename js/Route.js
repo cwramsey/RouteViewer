@@ -56,4 +56,11 @@ var Route = {
 $('#go').click(function(e) {
     e.preventDefault();
     Route.getRoute();
-})
+});
+
+$(document).keypress(function(e) {
+   if (e.which == 13 && $('input').is(':focus')) {
+       e.preventDefault();
+       Route.getRoute();
+   }
+});
