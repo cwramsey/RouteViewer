@@ -7,6 +7,10 @@
     margin: 0 0 25px 0;
 }
 
+.row {
+    padding: 15px;
+}
+
 .form-control {
     margin: 5px auto;
 }
@@ -14,6 +18,11 @@
 #map-canvas {
     width: 100%;
     height: 300px;
+    border-radius: 5px;
+}
+
+img {
+    border-radius: 5px;
 }
 
 .step img {
